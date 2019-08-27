@@ -1,6 +1,5 @@
 import flask_restful
 import flask
-import jwt
 import janusgraphy
 from http import HTTPStatus
 
@@ -19,16 +18,11 @@ class PlaceEndpoint(flask_restful.Resource):
     def post(self):  # create
         json = flask.request.json
         fields = ['name', 'display_name', 'token']
-        are_fields_missing, missing_fields_message = helper_functions.are_fields_missing(json, *fields)
-        if are_fields_missing:
-            return missing_fields_message, HTTPStatus.BAD_REQUEST
+        helper_functions.check_missing_fields(json, *fields)
 
-        name = json['name']
-        display_name = json['display_name']
-        token = json['token']
+        name, display_name, token = map(lambda x: json[x], fields)
 
-        payload = jwt.decode(jwt=token, key=CONSTANTS.key, algorithms='HS256')
-        administrator_id = payload['sub']
+        administrator_id, _ = helper_functions.decode_jwt(jwt_token=token)
 
         admin_user_vertex = janusgraphy.Query.from_vertex_id(administrator_id).fetch_first()
 
@@ -47,4 +41,16 @@ class PlaceEndpoint(flask_restful.Resource):
         return "Not implemented yet", HTTPStatus.NOT_IMPLEMENTED
 
     def get(self, place_id):  # get
-        return "Not implemented yet", HTTPStatus.NOT_IMPLEMENTED
+        json = flask.request.args
+
+        helper_functions.check_missing_fields(json, 'token')
+        token = json['token']
+
+        user_id, _ = helper_functions.decode_jwt(jwt_token=token)
+        user_places = janusgraphy.Query.from_vertex_id(user_id).through_outgoing_edge(db.Administers).fetch_all()
+        places_info = {p.graph_value.id: p.Properties for p in user_places}
+
+        if place_id in places_info:
+            return places_info[place_id], HTTPStatus.OK
+        else:
+            return 'Place not found or not authorized', HTTPStatus.NOT_FOUND

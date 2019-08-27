@@ -3,6 +3,9 @@ import string
 import datetime
 import jwt
 import hashlib
+import flask
+import janusgraphy
+from http import HTTPStatus
 
 # Local
 from constants import CONSTANTS
@@ -35,6 +38,14 @@ def are_fields_missing(json, *fields):
     return False, None
 
 
+def check_missing_fields(json, *fields):
+    any_fields_missing, missing_fields_message = are_fields_missing(json, *fields)
+    if any_fields_missing:
+        flask.abort(
+            HTTPStatus.BAD_REQUEST,
+            description=missing_fields_message,
+        )
+
 def generate_jwt(user_vertex):
     payload = {
         'sub': user_vertex.graph_value.id,
@@ -42,6 +53,11 @@ def generate_jwt(user_vertex):
         'iat': datetime.datetime.utcnow()
     }
     return jwt.encode(payload=payload, key=CONSTANTS.key, algorithm='HS256').decode()
+
+
+def decode_jwt(jwt_token):
+    payload = jwt.decode(jwt=jwt_token, key=CONSTANTS.key, algorithms='HS256')
+    return payload['sub'], payload['name']
 
 
 def hash_with_salt(payload, salt):

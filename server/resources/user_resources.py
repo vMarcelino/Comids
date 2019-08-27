@@ -1,7 +1,6 @@
 import flask_restful
 import flask
-import jwt
-import datetime
+import janusgraphy
 from http import HTTPStatus
 
 # import hack
@@ -19,9 +18,7 @@ class UserCreationEndpoint(flask_restful.Resource):
     def post(self):
         json = flask.request.json
 
-        are_fields_missing, missing_fields_message = helper_functions.are_fields_missing(json, 'user', 'password')
-        if are_fields_missing:
-            return missing_fields_message, HTTPStatus.BAD_REQUEST
+        helper_functions.check_missing_fields(json, 'user', 'password')
 
         username = json['user']
         password = json['password']
@@ -46,9 +43,7 @@ class UserAuthenticationEndpoint(flask_restful.Resource):
     def post(self):
         json = flask.request.json
 
-        are_fields_missing, missing_fields_message = helper_functions.are_fields_missing(json, 'user', 'password')
-        if are_fields_missing:
-            return missing_fields_message, HTTPStatus.BAD_REQUEST
+        helper_functions.check_missing_fields(json, 'user', 'password')
 
         username = json['user']
         password = json['password']
@@ -71,3 +66,16 @@ class UserAuthenticationEndpoint(flask_restful.Resource):
         else:
             # wrong password
             return "Wrong username or password", HTTPStatus.UNAUTHORIZED
+
+
+class UserPlaceInfoEndpoint(flask_restful.Resource):
+    def get(self):
+        json = flask.request.args
+
+        helper_functions.check_missing_fields(json, 'token')
+        token = json['token']
+
+        user_id, _ = helper_functions.decode_jwt(jwt_token=token)
+        user_places = janusgraphy.Query.from_vertex_id(user_id).through_outgoing_edge(db.Administers).fetch_all()
+
+        return {p.graph_value.id: p.Properties for p in user_places}, HTTPStatus.OK
