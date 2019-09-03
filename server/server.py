@@ -14,6 +14,7 @@ api.add_resource(resources.UserCreationEndpoint, '/signup')
 api.add_resource(resources.UserAuthenticationEndpoint, '/auth')
 api.add_resource(resources.UserPlaceInfoEndpoint, '/places/info')
 api.add_resource(resources.PlaceEndpoint, '/place')
+api.add_resource(resources.ListPlacesEndpoint, '/place/list')
 
 
 def run():

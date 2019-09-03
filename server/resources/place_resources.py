@@ -54,3 +54,10 @@ class PlaceEndpoint(flask_restful.Resource):
             return places_info[place_id], HTTPStatus.OK
         else:
             return 'Place not found or not authorized', HTTPStatus.NOT_FOUND
+
+
+class ListPlacesEndpoint(flask_restful.Resource):
+    def get(self):
+        places = db.Place.query().fetch_all()
+        places_info = {p.graph_value.id: p.Properties for p in places}
+        return places_info
