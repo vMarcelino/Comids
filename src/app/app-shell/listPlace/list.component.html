@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta charset="UTF-8">
+
+    <title>Lista de Lugares</title>
+
+     <!-- bootstrap - link cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- carregando icones -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- incluindo css -->
+    <link href="/src/app/app-shell/homePage/blank.component.css" rel="stylesheet">
+    <!-- materialize -->
+    <link type="text/css" rel="stylesheet" href="/src/app/app-shell/homePage/blank.materialize.min.css" media="screen,projection"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://www.freelogodesign.org/file/app/client/thumb/c4390fb7-8668-4d11-95f9-e26e0e11b663_200x200.png?1569553519077"/>
+</head>
+
+<body>
+
+<!-- SideNav -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id">< Place ID ></span>
+                <a routerLink="/listItem" href="item?id=<%= item[i].id %>" class="item_nome">< Place Name ></a>
+                <span class="item_data">< Place descrição ></span>
+                <br/>
+            </div>
+        </div>
+    </div>  
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id">< Place ID ></span>
+                <a  routerLink="/listItem" href="item?id=<%= item[i].id %>" class="item_nome">< Place Name ></a>
+                <span class="item_data">< Place descrição ></span>
+                <br/>
+            </div>
+        </div>
+    </div>  
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id">< Place ID ></span>
+                <a routerLink="/listItem" href="item?id=<%= item[i].id %>" class="item_nome">< Place Name ></a>
+                <span class="item_data">< Place descrição ></span>
+                <br/>
+            </div>
+        </div>
+    </div>  
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+        <button routerLink="/home" type="submit" class="btn btn-default center" id="Logout">Sair</button>
+</body>
+</html>
