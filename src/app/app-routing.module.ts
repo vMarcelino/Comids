@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'listItem',
     loadChildren: () => import('./app-shell/listItem/master-detail.module').then(mod => mod.MasterDetailModule)
   },
+  {
+    path: 'homeIndex',
+    loadChildren: () => import('./app-shell/homeIndex/home-index.module').then(mod => mod.HomeIndexModule)
+  },
+  {
+    path: 'food',
+    loadChildren: () => import('./app-shell/food/food.module').then(mod => mod.FoodModule)
+  },
 
 ];
 

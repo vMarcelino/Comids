@@ -5,12 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MasterDetailModule } from './app-shell/listItem/master-detail.module';
-
+import {HomeIndexModule } from './app-shell/homeIndex/home-index.module';
 import { ListModule } from './app-shell/listPlace/list.module';
 import { GridModule } from './app-shell/register/grid.module';
 import { BlankModule } from './app-shell/homePage/blank.module';
 import { NavBarComponent } from './app-shell/nav-bar/nav-bar.component';
 import { FooterComponent } from './app-shell/footer/footer.component';
+import { HomeIndexComponent } from './app-shell/homeIndex/home-index.component';
 
 
 @NgModule({
@@ -18,8 +19,6 @@ import { FooterComponent } from './app-shell/footer/footer.component';
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -29,6 +28,7 @@ import { FooterComponent } from './app-shell/footer/footer.component';
     ListModule,
     GridModule,
     BlankModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
