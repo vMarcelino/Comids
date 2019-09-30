@@ -12,6 +12,7 @@ import { BlankModule } from './app-shell/homePage/blank.module';
 import { NavBarComponent } from './app-shell/nav-bar/nav-bar.component';
 import { FooterComponent } from './app-shell/footer/footer.component';
 import { HomeIndexComponent } from './app-shell/homeIndex/home-index.component';
+import { PurchasedComponent } from './app-shell/purchasedItem/purchased.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HomeIndexComponent } from './app-shell/homeIndex/home-index.component';
     AppComponent,
     NavBarComponent,
     FooterComponent,
+    
   ],
   imports: [
     BrowserModule,
