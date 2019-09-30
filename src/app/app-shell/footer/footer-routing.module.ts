@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from './footer.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: FooterComponent
+  }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class FooterRoutingModule { }

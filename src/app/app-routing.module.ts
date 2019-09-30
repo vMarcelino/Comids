@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'purchased',
     loadChildren: () => import('./app-shell/purchasedItem/purchased.module').then(mod => mod.PurchasedModule)
   },
+   {
+    path: 'footer',
+    loadChildren: () => import('./app-shell/footer/footer.module').then(e => alert("E-mail cadastrado com sucesso"))
+  },
 
 ];
 
