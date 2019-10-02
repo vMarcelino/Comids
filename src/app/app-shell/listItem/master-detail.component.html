@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <title>List Item</title>
+
+    <!-- bootstrap - link cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- carregando icones -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- incluindo css -->
+    <link href="/src/app/app-shell/homePage/blank.component.css" rel="stylesheet">
+    <!-- materialize -->
+    <link type="text/css" rel="stylesheet" href="/src/app/app-shell/homePage/blank.materialize.min.css" media="screen,projection"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://www.freelogodesign.org/file/app/client/thumb/c4390fb7-8668-4d11-95f9-e26e0e11b663_200x200.png?1569553519077"/>
+</head>
+
+<body>
+<!-- SideNav -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+              <i class="material-icons prefix">attach_money</i>
+              <span class = "crredito " id="credito" name="credito"> credito/saldo   </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased" type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased" type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased" type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased" type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased"type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item_wrapper">
+                <span class="item_id" id="id" name="id">< Item ID ></span>
+                <span id="nome" name="nome" class="item_nome">< Item Name ></span>
+                <br/>
+                <span class="item_preco"> R$ < Item Price > </span>
+                <br/>
+                <p class="item_descricao">
+                    < Item Description>
+                </p>
+                <form action="/buyitem" method="post">
+                    <div class="hiddendiv">
+                        <div class="input-field col s12">
+                            <label for="titulo">id:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<%= item[0].id %>">
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">tv</i>
+                            <label for="pwd">nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="<%= item[0].nome %>">
+                        </div>
+
+                        <div class="input-field col s12">
+
+                            <i class="material-icons prefix">attach_money</i>
+                            <label for="pwd">preço:</label>
+                            <input type="text" class="form-control" id="preco" name="preco"
+                                   value="<%= item[0].preco %>">
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <label for="pwd">Descrição</label>
+                            <input type="text" class="form-control" id="descricao" name="descricao"
+                                   value="<%= item[0].descricao %> ">
+
+                        </div>
+                    </div>
+                    <button routerLink="/purchased" type="submit" class="btn btn-default">comprar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<button routerLink="/food" type="submit" class="btn btn-default center" id="Back">Criar Alimento</button>
+<button routerLink="/listPlace" type="submit" class="btn btn-default center" id="Back">Voltar</button>
+<button routerLink="/home" type="submit" class="btn btn-default center" id="Logout">Sair</button>
+
+<script 
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+        
+</body>
+</html>
