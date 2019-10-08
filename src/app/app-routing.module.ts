@@ -35,10 +35,7 @@ const routes: Routes = [
     path: 'footer',
     loadChildren: () => import('./app-shell/footer/footer.module').then(e => alert("E-mail cadastrado com sucesso"))
   },
-  {
-    path: 'listItemDuChef',
-    loadChildren: () => import('./app-shell/listItemDuChef/list-item.module').then(mod => mod.ListItemModule)
-  },
+  
 
 ];
 
