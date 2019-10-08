@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MasterDetailModule } from './app-shell/listItemCantina/master-detail.module';
-import {HomeIndexModule } from './app-shell/homeIndex/home-index.module';
+import { HomeIndexModule } from './app-shell/homeIndex/home-index.module';
 import { ListModule } from './app-shell/listPlace/list.module';
 import { GridModule } from './app-shell/register/grid.module';
 import { BlankModule } from './app-shell/homePage/blank.module';
@@ -20,7 +20,8 @@ import { ListItemComponent } from './app-shell/listItemDuChef/list-item.componen
   declarations: [
     AppComponent,
     NavBarComponent,
-    FooterComponent, 
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { ListItemComponent } from './app-shell/listItemDuChef/list-item.componen
     ListModule,
     GridModule,
     BlankModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

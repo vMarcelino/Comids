@@ -22,6 +22,9 @@ export class BlankComponent {
             .subscribe(
                 data => {
                     console.log(data)
+                    var token = data['token']
+                    console.log(token)
+                    window.localStorage.setItem('user_token', token)
                     this.router.navigate(['listPlace'])
                 },
                 error => {
