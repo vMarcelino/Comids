@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-list',
@@ -7,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./list.component.css', '../homePage/blank.materialize.css']
 })
 export class ListComponent {
-    Places: string[] = ['p1', 'p2']
-    constructor(private http: HttpClient) {
+    Places: Object[] = ['p1', 'p2']
+    constructor(private http: HttpClient, public router: Router) {
 
         var ip = 'eisengarth.ddns.net'
         var ip = '127.0.0.1'
@@ -20,7 +21,7 @@ export class ListComponent {
                     Object.keys(data).forEach(key => {
                         data[key]['id'] = key
                         this.Places.push(data[key])
-                        window.localStorage.setItem('place_id', key.toString())
+
                     });
                 },
                 error => {
@@ -28,7 +29,8 @@ export class ListComponent {
                 }
             )
     }
-    OnInit() {
-
+    onPlaceClicked(place_id) {
+        window.localStorage.setItem('place_id', place_id.toString())
+        this.router.navigate(['listItem'])
     }
 }
