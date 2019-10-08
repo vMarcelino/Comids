@@ -1,6 +1,7 @@
 <!doctype html>
 <main id="mainContent"></main>
 <html>
+
 <head>
     <meta charset="UTF-8">
 
@@ -8,42 +9,45 @@
 
     <!-- bootstrap - link cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- carregando icones -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- incluindo css -->
     <link href="/src/app/app-shell/homePage/blank.component.css" rel="stylesheet">
     <!-- materialize -->
-    <link type="text/css" rel="stylesheet" href="/src/app/app-shell/homePage/blank.materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/src/app/app-shell/homePage/blank.materialize.min.css"
+        media="screen,projection" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="https://www.freelogodesign.org/file/app/client/thumb/c4390fb7-8668-4d11-95f9-e26e0e11b663_200x200.png?1569553519077"/>
+    <link rel="shortcut icon"
+        href="https://www.freelogodesign.org/file/app/client/thumb/c4390fb7-8668-4d11-95f9-e26e0e11b663_200x200.png?1569553519077" />
 </head>
+
 <body>
- 
-<div class="container">
-    <form action="/autentificar" method="post">
+
+    <div class="container">
         <div class="jumbotron" id="formulario">
 
             <div class="txt">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="user" name="user" type="text" value="" class="validate">
+                        <input #userinput id="user" name="user" type="text" value="" class="validate">
                         <label class="active" for="titulo">User</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">vpn_key</i>
-                        <input id="password" name="password" type="password" value="" class="validate">
+                        <input #passwordinput id="password" name="password" type="password" value="" class="validate">
                         <label class="active" for="pwd">Password</label>
                     </div>
                 </div>
             </div>
-            <button routerLink="/listPlace" (click)="onLoginClicked($event)" type="submit" class="btn btn-default center" id="Login">Login</button>
+            <button (click)="onLoginClicked($event)" type="submit" class="btn btn-default center"
+                id="Login">Login</button>
             <button routerLink="/register" type="submit" class="btn btn-default center" id="Cadastro">Cadastro</button>
         </div>
-    </form>
-</div>
+    </div>
 </body>
+
 </html>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   {
     path: 'home',
     loadChildren: () => import('./app-shell/homePage/blank.module').then(mod => mod.BlankModule)
@@ -27,11 +27,11 @@ const routes: Routes = [
     path: 'food',
     loadChildren: () => import('./app-shell/food/food.module').then(mod => mod.FoodModule)
   },
-   {
+  {
     path: 'purchased',
     loadChildren: () => import('./app-shell/purchasedItem/purchased.module').then(mod => mod.PurchasedModule)
   },
-   {
+  {
     path: 'footer',
     loadChildren: () => import('./app-shell/footer/footer.module').then(e => alert("E-mail cadastrado com sucesso"))
   },
