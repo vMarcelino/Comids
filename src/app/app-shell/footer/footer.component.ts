@@ -3,7 +3,7 @@
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css', '../homePage/blank.materialize.min.css','../homePage/blank.materialize.css']
 })
 export class FooterComponent implements OnInit {
 

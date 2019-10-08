@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Cadastro de Clientes</title>
+
+    <!-- bootstrap - link cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- carregando icones -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- incluindo css -->
+    <link href="/src/app/app-shell/homePage/blank.component.css" rel="stylesheet">
+    <!-- materialize -->
+    <link type="text/css" rel="stylesheet" href="/src/app/app-shell/homePage/blank.materialize.min.css" media="screen,projection"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://www.freelogodesign.org/file/app/client/thumb/c4390fb7-8668-4d11-95f9-e26e0e11b663_200x200.png?1569553519077"/>
+
+</head>
+
+<body>
+
+<!-- SideNav -->
+<div class="container">
+    <div class="row">
+        <form action="/salvar_cliente" method="post">
+        <div class="jumbotron" id="formulario">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="ID" name="ID" type="text" value="" class="validate">
+                        <label class="active" for="titulo">ID</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="nomealimento" name="nomealimento" type="text" value="" class="validate">
+                        <label class="active" for="pwd">Nome do alimento</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Preço" name="Preço" type="text" value=""
+                               class="validate">
+                        <label class="active" for="pwd">Preço</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        
+                        <input id="descricao" name="descricao" type="text" value="" class="validate">
+                        <label class="active" for="pwd">Descrição</label>
+                    </div>
+                </div>
+                </div>
+            
+            <button routerLink="/listItem" type="submit" class="btn btn-default">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
