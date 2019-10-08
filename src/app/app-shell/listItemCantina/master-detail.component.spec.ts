@@ -1,30 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { ListComponent } from './list.component';
+import { MasterDetailComponent } from './master-detail.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('MasterDetailComponent', () => {
+  let component: MasterDetailComponent;
+  let fixture: ComponentFixture<MasterDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ListComponent,
+        MasterDetailComponent,
       ],
       imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientTestingModule,
-        NgbAlertModule
+        HttpClientTestingModule
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(MasterDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

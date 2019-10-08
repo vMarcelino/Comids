@@ -1,9 +1,8 @@
-﻿import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { FoodComponent } from './food.component';
 
-import { WarningMessageModule } from '../../shared/warning-message/warning-message.module';
 
 describe('FoodComponent', () => {
   let component: FoodComponent;
@@ -15,7 +14,6 @@ describe('FoodComponent', () => {
         FoodComponent,
       ],
       imports: [
-        WarningMessageModule,
         HttpClientTestingModule
       ]
     }).compileComponents();
