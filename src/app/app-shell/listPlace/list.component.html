@@ -38,33 +38,28 @@
     <div class="row">
         <div class="col-md-12">
             <div class="item_wrapper">
-                <span class="item_id">< Place ID ></span>
-                <a  routerLink="/listItem" href="item?id=<%= item[i].id %>" class="item_nome">< Place Name ></a>
-                <span class="item_data">< Place descrição ></span>
+                <span class="item_id"> ID: 2 </span>
+                <a  routerLink="/listItemDuChef" href="item?id=<%= item[i].id %>" class="item_nome"> Ponto du Chef </a>
+                <span class="item_data">Rua Padre Vitor 741, 37540-000, Santa Rita do Sapucaí</span>
                 <br/>
             </div>
         </div>
     </div>  
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="item_wrapper">
-                <span class="item_id">< Place ID ></span>
-                <a routerLink="/listItem" href="item?id=<%= item[i].id %>" class="item_nome">< Place Name ></a>
-                <span class="item_data">< Place descrição ></span>
-                <br/>
-            </div>
-        </div>
-    </div>  
-</div>
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+           <button routerLink="/homeIndex" type="submit" class="btn btn-default center" id="Place">Criar Estabelecimento</button>
 
-        <button routerLink="/homeIndex" type="submit" class="btn btn-default center" id="Place">Criar Estabelecimento</button>
+          <button routerLink="/home" type="submit" class="btn btn-default center" id="Logout">Sair</button>
+        </div>
+    </div>  
+</div>
 
-        <button routerLink="/home" type="submit" class="btn btn-default center" id="Logout">Sair</button>
 </body>
 </html>

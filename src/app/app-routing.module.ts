@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'listItem',
-    loadChildren: () => import('./app-shell/listItem/master-detail.module').then(mod => mod.MasterDetailModule)
+    loadChildren: () => import('./app-shell/listItemCantina/master-detail.module').then(mod => mod.MasterDetailModule)
   },
   {
     path: 'homeIndex',
@@ -34,6 +34,10 @@ const routes: Routes = [
    {
     path: 'footer',
     loadChildren: () => import('./app-shell/footer/footer.module').then(e => alert("E-mail cadastrado com sucesso"))
+  },
+  {
+    path: 'listItemDuChef',
+    loadChildren: () => import('./app-shell/listItemDuChef/list-item.module').then(mod => mod.ListItemModule)
   },
 
 ];

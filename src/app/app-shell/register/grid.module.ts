@@ -1,9 +1,8 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GridComponent } from './grid.component';
 import { GridRoutingModule } from './grid-routing.module';
-import { WarningMessageModule } from '../../shared/warning-message/warning-message.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +10,6 @@ import { WarningMessageModule } from '../../shared/warning-message/warning-messa
   ],
   imports: [
     CommonModule,
-    WarningMessageModule,
     GridRoutingModule
   ]
 })
