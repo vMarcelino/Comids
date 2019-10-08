@@ -61,11 +61,11 @@ class UserAuthenticationEndpoint(flask_restful.Resource):
 
         if computed_password == saved_password:
             encoded = helper_functions.generate_jwt(user_vertex)
-            return {'token': encoded}, HTTPStatus.ACCEPTED
+            return {'token': encoded}, HTTPStatus.ACCEPTED, {'Access-Control-Allow-Origin': '*'}
 
         else:
             # wrong password
-            return "Wrong username or password", HTTPStatus.UNAUTHORIZED
+            return "Wrong username or password", HTTPStatus.UNAUTHORIZED, {'Access-Control-Allow-Origin': '*'}
 
 
 class UserPlaceInfoEndpoint(flask_restful.Resource):
