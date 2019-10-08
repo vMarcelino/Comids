@@ -86,30 +86,56 @@ class UserOrderEndpoint(flask_restful.Resource):
     def get(self):
         json = flask.request.args
 
-        fields = ['place_id', 'token']
-        helper_functions.check_missing_fields(json, *fields)
-        place_id, token = map(lambda x: json[x], fields)
+        if 'place_id' in json:
 
-        place_vertex: db.Place = helper_functions.get_vertex_or_404(place_id, db.Place)
-        user_id, _ = helper_functions.decode_jwt(jwt_token=token)
+            fields = ['place_id', 'token']
+            helper_functions.check_missing_fields(json, *fields)
+            place_id, token = map(lambda x: json[x], fields)
 
-        q_relation = janusgraphy.Query.relation()  # represents the order
-        q_relation.through_incoming_edge(db.Orders).filter_by_property(id=user_id, Label=db.User)
+            place_vertex: db.Place = helper_functions.get_vertex_or_404(place_id, db.Place)
+            user_id, _ = helper_functions.decode_jwt(jwt_token=token)
 
-        user_orders_from_place_q = place_vertex.query(verbose=True)
-        user_orders_from_place_q.through_incoming_edge(db.From)
-        user_orders_from_place_q.filter_by_property(done=False)
-        user_orders_from_place_q.filter_by_relation(q_relation)
-        user_orders_from_place: List[db.Order] = user_orders_from_place_q.fetch_all()
-        orders = {}
-        for order in user_orders_from_place:
-            q = order.query()
-            q.through_outgoing_edge(db.Has)
-            q.filter_by_property(Label=db.MenuItem)
-            items: List[db.MenuItem] = q.fetch_all()
-            orders[order.graph_value.id] = {"items": [{item.graph_value.id: item.Properties} for item in items]}
+            q_relation = janusgraphy.Query.relation()  # represents the order
+            q_relation.through_incoming_edge(db.Orders).filter_by_property(id=user_id, Label=db.User)
 
-        return orders, HTTPStatus.OK
+            user_orders_from_place_q = place_vertex.query(verbose=True)
+            user_orders_from_place_q.through_incoming_edge(db.From)
+            user_orders_from_place_q.filter_by_property(done=False)
+            user_orders_from_place_q.filter_by_relation(q_relation)
+            user_orders_from_place: List[db.Order] = user_orders_from_place_q.fetch_all()
+            orders = {}
+            for order in user_orders_from_place:
+                q = order.query()
+                q.through_outgoing_edge(db.Has)
+                q.filter_by_property(Label=db.MenuItem)
+                items: List[db.MenuItem] = q.fetch_all()
+                orders[order.graph_value.id] = {
+                    "items": [{
+                        **item.Properties, 'id': item.graph_value.id
+                    } for item in items]
+                }
+
+            return orders, HTTPStatus.OK
+
+        elif 'order_id' in json:
+            fields = ['order_id', 'token']
+            helper_functions.check_missing_fields(json, *fields)
+            order_id, token = map(lambda x: json[x], fields)
+
+            order_vertex: db.Order = helper_functions.get_vertex_or_404(order_id, db.Order)
+            user_id, _ = helper_functions.decode_jwt(jwt_token=token)
+
+            if order_vertex.is_from_user(user_id):
+                q = order_vertex.query()
+                q.through_outgoing_edge(db.Has)
+                q.filter_by_property(Label=db.MenuItem)
+                items: List[db.MenuItem] = q.fetch_all()
+                return {"items": [{**item.Properties, 'id': item.graph_value.id} for item in items]}, HTTPStatus.OK
+            else:
+                return 'order not found', HTTPStatus.NOT_FOUND
+
+        else:
+            return 'missing place_id or order_id', HTTPStatus.BAD_REQUEST
 
     def post(self):  # create order (at least one item needed)
         # get fields info
@@ -130,7 +156,13 @@ class UserOrderEndpoint(flask_restful.Resource):
         if is_item_from_place:
             order_vertex = db.Order(False, place_vertex, user_vertex)
             order_vertex.add_item(item_vertex)
-            return 'Order created and item added', HTTPStatus.OK
+            return {
+                'message': 'Order created and item added',
+                'id': order_vertex.graph_value.id,
+                'items': [{
+                    item_vertex.graph_value.id: item_vertex.Properties
+                }]
+            }, HTTPStatus.OK
 
         else:
             return 'Item is not from the specified place', HTTPStatus.NOT_FOUND

@@ -58,6 +58,7 @@ export class MasterDetailComponent {
                             .subscribe(data2 => {
                                 console.log('order creation response:')
                                 console.log(data2)
+                                window.localStorage.setItem('order_id', data2['id'].toString())
                                 this.router.navigate(['purchased'])
                             },
                                 error => {
@@ -67,6 +68,7 @@ export class MasterDetailComponent {
                     }
                     else {
                         var order_id = keys[0]
+                        window.localStorage.setItem('order_id', order_id.toString())
                         console.log('Using order ' + order_id.toString())
                         this.http.put(AppSettings.API_ENDPOINT + 'order', {
                             'order_id': order_id, 'item_id': item_id, 'token': token
