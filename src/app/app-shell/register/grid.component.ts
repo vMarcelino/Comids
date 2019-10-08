@@ -6,16 +6,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css' , '../homePage/blank.materialize.min.css','../homePage/blank.materialize.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent  {
 
-  GreyBox = require('../../../assets/GreyBox.svg') as string;
-  WarningMessageText = 'Request to get grid text failed:';
-  WarningMessageOpen = false;
-  ngOnInit() {
-    
-  }
-  handleWarningClose(open: boolean) {
-    this.WarningMessageOpen = open;
-    this.WarningMessageText = '';
-  }
 }
