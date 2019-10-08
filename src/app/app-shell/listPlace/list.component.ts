@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AppSettings } from "../../shared/constants";
 
 @Component({
     selector: 'app-list',
@@ -11,9 +12,7 @@ export class ListComponent {
     Places: Object[] = ['p1', 'p2']
     constructor(private http: HttpClient, public router: Router) {
 
-        var ip = 'eisengarth.ddns.net'
-        var ip = '127.0.0.1'
-        this.http.get('http://' + ip + ':2283/place/list')
+        this.http.get(AppSettings.API_ENDPOINT+ 'place/list')
             .subscribe(
                 data => {
                     console.log(data)

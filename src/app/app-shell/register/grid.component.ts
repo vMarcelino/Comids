@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AppSettings } from "../../shared/constants";
 
 
 @Component({
@@ -15,13 +16,11 @@ export class GridComponent {
   constructor(private http: HttpClient, public router: Router) { }
 
   onSignupClicked(event: Event) {
-    var ip = 'eisengarth.ddns.net'
-    var ip = '127.0.0.1'
     var user = this.userInput.nativeElement.value
     var password = this.passwordInput.nativeElement.value
     var data = { 'user': user, 'password': password }
     console.log(user + ', ' + password)
-    this.http.post('http://' + ip + ':2283/signup', data)
+    this.http.post(AppSettings.API_ENDPOINT + 'signup', data)
       .subscribe(
         data => {
           console.log(data)
