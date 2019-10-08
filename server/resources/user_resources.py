@@ -96,8 +96,9 @@ class UserOrderEndpoint(flask_restful.Resource):
         q_relation = janusgraphy.Query.relation()  # represents the order
         q_relation.through_incoming_edge(db.Orders).filter_by_property(id=user_id, Label=db.User)
 
-        user_orders_from_place_q = place_vertex.query()
-        user_orders_from_place_q.filter_by_incoming_edge(db.From)
+        user_orders_from_place_q = place_vertex.query(verbose=True)
+        user_orders_from_place_q.through_incoming_edge(db.From)
+        user_orders_from_place_q.filter_by_property(done=False)
         user_orders_from_place_q.filter_by_relation(q_relation)
         user_orders_from_place: List[db.Order] = user_orders_from_place_q.fetch_all()
         orders = {}
@@ -106,7 +107,7 @@ class UserOrderEndpoint(flask_restful.Resource):
             q.through_outgoing_edge(db.Has)
             q.filter_by_property(Label=db.MenuItem)
             items: List[db.MenuItem] = q.fetch_all()
-            orders[order.graph_value.id] = [{item.graph_value.id: item.Properties} for item in items]
+            orders[order.graph_value.id] = {"items": [{item.graph_value.id: item.Properties} for item in items]}
 
         return orders, HTTPStatus.OK
 
@@ -129,6 +130,7 @@ class UserOrderEndpoint(flask_restful.Resource):
         if is_item_from_place:
             order_vertex = db.Order(False, place_vertex, user_vertex)
             order_vertex.add_item(item_vertex)
+            return 'Order created and item added', HTTPStatus.OK
 
         else:
             return 'Item is not from the specified place', HTTPStatus.NOT_FOUND
@@ -142,11 +144,12 @@ class UserOrderEndpoint(flask_restful.Resource):
 
         user_id, _ = helper_functions.decode_jwt(jwt_token=token)
 
-        order_vertex: db.Order = helper_functions.get_vertex_or_404(order_id, db.Place)
-        item_vertex: db.MenuItem = helper_functions.get_vertex_or_404(item_id, Label=db.MenuItem)
+        order_vertex: db.Order = helper_functions.get_vertex_or_404(order_id, db.Order, 'order not found')
+        item_vertex: db.MenuItem = helper_functions.get_vertex_or_404(item_id, db.MenuItem, 'item not found')
 
         if order_vertex.is_from_user(user_id):
             order_vertex.add_item(item_vertex)
+            return 'Item added', HTTPStatus.OK
 
         else:
             return 'Invalid order id', HTTPStatus.NOT_FOUND

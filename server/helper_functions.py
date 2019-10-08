@@ -47,14 +47,14 @@ def check_missing_fields(json, *fields):
         )
 
 
-def get_vertex_or_404(id, Label):
+def get_vertex_or_404(id, Label, message='invalid id'):
     try:
         v = janusgraphy.get_vertex_from_id(id, Label)
 
-    except IndexError:
+    except StopIteration:
         flask.abort(
             HTTPStatus.NOT_FOUND,
-            description='invalid id',
+            description=message,
         )
 
     return v
@@ -64,7 +64,7 @@ def first_or_404(query: janusgraphy.Query, error_message: str):
     try:
         result = query.fetch_first()
 
-    except IndexError:
+    except StopIteration:
         flask.abort(
             HTTPStatus.NOT_FOUND,
             description=error_message,
