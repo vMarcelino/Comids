@@ -35,7 +35,7 @@ class ItemCreationEndpoint(flask_restful.Resource):
         if count == 1:
             menu_item_vertex = db.MenuItem(name=name, value=value, description=description, menu=menu_vertex)
             return {menu_item_vertex.graph_value.id: menu_item_vertex.Properties}, HTTPStatus.OK
-            
+
         else:
             return 'No menu with id specified', HTTPStatus.NOT_FOUND
 

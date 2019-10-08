@@ -19,7 +19,7 @@ api.add_resource(resources.PlaceEndpoint, '/place')  # create, get, update, dele
 api.add_resource(resources.ListPlacesEndpoint, '/place/list')  # list all places
 api.add_resource(resources.MenuListEndpoint, '/place/menu/list/<int:place_id>', '/menu/<int:menu_id>')
 api.add_resource(resources.MenuCreationEndpoint, '/menu')  # create, get, update, delete a menu
-
+api.add_resource(resources.ItemCreationEndpoint, '/menu/item/create')
 
 #@api.representation('application/json')
 #def output_json(data, code, headers

@@ -64,11 +64,9 @@ class MenuListEndpoint(flask_restful.Resource):
 
             menu_items = menu_vertex.query().through_outgoing_edge(db.HasItem).fetch_all()
             return {
-                menu_vertex.graph_value.id: {
-                    'properties': menu_vertex.Properties,
-                    'items': {item.graph_value.id: item.Properties
-                              for item in menu_items}
-                }
+                'properties': menu_vertex.Properties,
+                'items': {item.graph_value.id: item.Properties
+                          for item in menu_items}
             }, HTTPStatus.OK
 
         elif place_id is not None:
