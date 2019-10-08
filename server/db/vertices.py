@@ -24,8 +24,8 @@ class Menu(janusgraphy.Vertex):
 
 
 class MenuItem(janusgraphy.Vertex):
-    Structure = ['name', 'value']
+    Structure = ['name', 'value', 'description']
 
-    def __init__(self, name: str, value: float, menu: Menu, **kwargs):
-        super().__init__(name=name, value=value, **kwargs)
+    def __init__(self, name: str, value: float, description: str, menu: Menu, **kwargs):
+        super().__init__(name=name, value=value, description=description, **kwargs)
         menu.add_edge(HasItem, self)
