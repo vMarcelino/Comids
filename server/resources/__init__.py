@@ -1,4 +1,4 @@
 from .place_resources import PlaceEndpoint, ListPlacesEndpoint
-from .user_resources import UserAuthenticationEndpoint, UserCreationEndpoint, UserPlaceInfoEndpoint
-from .menu_resources import MenuCreationEndpoint, MenuListEndpoint, MenuItemEndpoint
+from .user_resources import UserAuthenticationEndpoint, UserCreationEndpoint, UserPlaceInfoEndpoint, UserOrderEndpoint, UserOrderAcceptEndpoint
+from .menu_resources import MenuCreationEndpoint, MenuListEndpoint
 from .item_resources import ItemCreationEndpoint

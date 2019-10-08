@@ -25,8 +25,8 @@ class MenuCreationEndpoint(flask_restful.Resource):
 
         # get user info (no need to check if the vertex is a User vertex as the token integrity is granted)
         administrator_id, _ = helper_functions.decode_jwt(jwt_token=token)
-        admin_user_vertex = janusgraphy.Query.from_vertex_id(administrator_id).fetch_first()
-        place_vertex = janusgraphy.Query.from_vertex_id(place_id).fetch_first()
+        admin_user_vertex = helper_functions.get_vertex_or_404(administrator_id, db.User)
+        place_vertex = helper_functions.get_vertex_or_404(place_id, db.Place)
 
         #checks whether the user owns the place given
         place_count = admin_user_vertex.query().through_outgoing_edge(
@@ -79,16 +79,3 @@ class MenuListEndpoint(flask_restful.Resource):
             menus = place_vertex.query().through_outgoing_edge(db.HasMenu).fetch_all()
             return {menu_vertex.graph_value.id: menu_vertex.Properties for menu_vertex in menus}, HTTPStatus.OK
 
-
-class MenuItemEndpoint(flask_restful.Resource):
-    def post(self):  # create
-        pass
-
-    def put(self):  # update
-        pass
-
-    def get(self):  # get
-        pass
-
-    def delete(self):  # delete
-        pass
